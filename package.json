@@ -1,0 +1,15 @@
+{
+  "name": "webapptest",
+  "version": "1.0.0",
+  "description": "testing k8s to create new container within a pod",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Tony Wang",
+  "license": "ISC",
+  "dependencies": {
+    "dockerode": "^2.5.7",
+    "express": "^4.16.3"
+  }
+}
