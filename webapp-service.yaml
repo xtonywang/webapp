@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-app
+spec:
+  selector:
+    tier: frontend
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 31002
