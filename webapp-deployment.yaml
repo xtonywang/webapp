@@ -19,5 +19,13 @@ spec:
       - name: web-app
         image: tonywang/webapp
         imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: docker-socket
         ports:
         - containerPort: 8080
+      volumes:
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket
