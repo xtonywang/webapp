@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  labels:
+    app: web-app
+    tier: frontend
+spec:
+  containers:
+  - name: web-app
+    image: tonywang/webapp
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - mountPath: /var/run/dockershim.sock
+      name: k8s-docker-socket
+    ports:
+    - containerPort: 8080
+  volumes:
+  - name: k8s-docker-socket
+    hostPath:
+      path: /var/run/dockershim.sock
+      type: Socket
