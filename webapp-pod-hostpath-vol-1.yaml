@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web-app-hostpath
+  name: web-app-hostpath-1
   labels:
     app: web-app
-    vol: hostpath
+    vol: hostpath-1
 spec:
   containers:
   - name: web-app
