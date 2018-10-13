@@ -4,7 +4,7 @@ metadata:
   name: web-app
 spec:
   selector:
-    tier: frontend
+    app: web-app
   type: NodePort
   ports:
     - port: 8080
