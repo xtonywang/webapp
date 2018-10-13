@@ -9,6 +9,7 @@
   "author": "Tony Wang",
   "license": "ISC",
   "dependencies": {
+    "@kubernetes/client-node": "^0.6.0",
     "dockerode": "^2.5.7",
     "express": "^4.16.3"
   }
