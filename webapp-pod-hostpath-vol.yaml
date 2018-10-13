@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: hostpath
+  name: web-app-hostpath
   labels:
     app: web-app
     vol: hostpath
@@ -26,5 +26,3 @@ spec:
     hostPath:
       path: /var/run/dockershim.sock
       type: Socket
-  nodeSelector:
-    hostname: 192.168.0.18
