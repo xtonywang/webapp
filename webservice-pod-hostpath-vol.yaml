@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath-2
+  labels:
+    app: web-service
+    vol: hostpath
+spec:
+  containers:
+  - name: web-service
+    image: tonywang/webservice
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - mountPath: /usr/src/share
+      name: k8s-docker-hostpath
+    - mountPath: /var/run/dockershim.sock
+      name: k8s-docker-socket
+    ports:
+    - containerPort: 8080
+  volumes:
+  - name: k8s-docker-hostpath
+    hostPath:
+      path: /home/tonywang/share
+      type: DirectoryOrCreate
+  - name: k8s-docker-socket
+    hostPath:
+      path: /var/run/dockershim.sock
+      type: Socket
+  nodeSelector:
+    hostname: 192.168.0.18
