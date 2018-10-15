@@ -21,14 +21,17 @@ app.get('/ws', (req, res)=>{
 });
 
 app.get('/pod/create', (req, res)=>{
-  let parentPath = path.dirname(__dirname);
-  let podFile = path.resolve(parentPath, 'webservice/webservice-pod-hostpath-vol.yaml');
-  k8sClient.createPod(podFile);
-  res.send('creating new pod...\n');
+  //let parentPath = path.dirname(__dirname);
+  let podFile = path.resolve(__dirname, 'yaml/webservice-pod-hostpath-vol.yaml');
+  let result = k8sClient.createPod(podFile, (data)=>{
+    res.send('creating new pod...\n' + data);
+  });
 });
 
 app.get('/pod/list', (req, res)=>{
-  k8sClient.listPods('default');
+  let result = k8sClient.listPods('default', (data)=>{
+      res.send(data);
+  });
 });
 
 app.listen(PORT, HOST);
