@@ -2,6 +2,8 @@
 
 const express = require('express');
 const msCtl = require('./msController');
+const k8sClient = require('./k8sClient');
+const path = require('path');
 
 // Constants
 const PORT = 8080;
@@ -16,6 +18,17 @@ app.get('/', (req, res) => {
 app.get('/ws', (req, res)=>{
   msCtl.createBackend();
   res.send('web service is started...\n');
+});
+
+app.get('/pod/create', (req, res)=>{
+  let parentPath = path.dirname(__dirname);
+  let podFile = path.resolve(parentPath, 'webservice/webservice-pod-hostpath-vol.yaml');
+  k8sClient.createPod(podFile);
+  res.send('creating new pod...\n');
+});
+
+app.get('/pod/list', (req, res)=>{
+  k8sClient.listPods('default');
 });
 
 app.listen(PORT, HOST);
