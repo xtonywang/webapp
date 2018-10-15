@@ -13,8 +13,10 @@ let listPods = (namespace) => {
     k8sApi.listNamespacedPod(namespace)
     .then((res)=>{
         console.log(res.body);
+        return res.body;
     }).catch((err)=>{
         console.log(err.body);
+        return err.body;
     });
 };
 
@@ -25,11 +27,15 @@ let createPod = (podFile) => {
         k8sApi.createNamespacedPod('default', podDef)
             .then((res)=>{
                 console.log(res.body);
+                return res.body;
             }).catch((err)=>{
                 console.log(err.body);
+                return err.body;
             });
     } else {
-        console.log("pod file doesn't exist\n");
+        let errMsg = "pod file doesn't exist\n";
+        console.log(errMsg);
+        return errMsg + podFile;
     }
 };
 
