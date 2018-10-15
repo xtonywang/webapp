@@ -13,7 +13,7 @@ spec:
     volumeMounts:
     - mountPath: /usr/src/share
       name: k8s-docker-hostpath
-    - mountPath: /var/run/dockershim.sock
+    - mountPath: /var/run/docker.sock
       name: k8s-docker-socket
     ports:
     - containerPort: 8080

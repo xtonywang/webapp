@@ -24,13 +24,13 @@ app.get('/pod/create', (req, res)=>{
   //let parentPath = path.dirname(__dirname);
   let podFile = path.resolve(__dirname, 'yaml/webservice-pod-hostpath-vol.yaml');
   let result = k8sClient.createPod(podFile, (data)=>{
-    res.send('creating new pod...\n' + data);
+    res.send(data);
   });
 });
 
 app.get('/pod/list', (req, res)=>{
   let result = k8sClient.listPods('default', (data)=>{
-      res.send(data);
+    res.send(data);
   });
 });
 
